@@ -15,12 +15,12 @@ screen = pygame.display.set_mode((loc_x, loc_y)) # дает переменной
 myimage = pygame.image.load("art.jpg").convert()                    # загружаем картинку в игру и конвертируем ее
 myimage = pygame.transform.scale(myimage, (480, 220))
 
-while game_over == False:                                           # выводим картинку до тех пор пока пользователь не нажмет кнопку
+while game_over == False:                                           # выводим картинку до тех пор пока пользователь не нажмет кнопку Escape
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 game_over = True
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP:                            # Теперь наша картинка двигается по нажатию стрелок на 5
                 loc_i_y -= 5
             if event.key == pygame.K_DOWN:
                 loc_i_y += 5
@@ -28,9 +28,9 @@ while game_over == False:                                           # вывод
                 loc_i_x -= 5
             if event.key == pygame.K_RIGHT:
                 loc_i_x += 5
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN:                    # тут картинка перемещается по нажатию кнопки мыши
             loc_i_x, loc_i_y = event.pos
         
-    screen.fill(bg_color)
+    screen.fill(bg_color)                                           # добавим задний план выбранного цвета
     screen.blit(myimage, (loc_i_x, loc_i_y))                        # расположение картинки
     pygame.display.flip()                                           # вывести все на экран
